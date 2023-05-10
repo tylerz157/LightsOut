@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ju5q60t7quw"]
+[gd_scene load_steps=7 format=3 uid="uid://b3ju5q60t7quw"]
 
 [ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="1_h2qkj"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_srbv3"]
+[ext_resource type="Texture2D" uid="uid://ckqvtra4du7b4" path="res://icon.svg" id="2_qn1y7"]
 [ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="2_vw67v"]
 [ext_resource type="PackedScene" uid="uid://ck7usm3smr8xs" path="res://marker.tscn" id="4_ejch4"]
+[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="5_nxmnk"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_srbv3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(11, 41.5)
+scale = Vector2(3.51563, 2.07031)
+texture = ExtResource("2_qn1y7")
 
 [node name="Player" parent="." instance=ExtResource("1_h2qkj")]
 scale = Vector2(0.2, 0.2)
@@ -39,3 +49,9 @@ position = Vector2(6, -90)
 scale = Vector2(4.12001, -0.172365)
 
 [node name="lantern" parent="." instance=ExtResource("4_ejch4")]
+
+[node name="PointLight2D" type="PointLight2D" parent="lantern"]
+scale = Vector2(3.33333, 3.33333)
+shadow_enabled = true
+texture = ExtResource("5_nxmnk")
+texture_scale = 3.0
