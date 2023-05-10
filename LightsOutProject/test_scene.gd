@@ -1,6 +1,7 @@
 extends Node2D
 
 var marker = preload("res://marker.tscn")
+var light_wall = preload("res://light_wall.tscn")
 var ground_verts = []
 var draw_verts = []
 
@@ -23,15 +24,9 @@ func _ready():
 		corners.append(Vector2(-(rect.size[0] * gscale[0])/2, -(rect.size[1] * gscale[1])/2))
 		corners.append(Vector2((rect.size[0] * gscale[0])/2, -(rect.size[1] * gscale[1])/2))
 		
-		# set markers on the corners to show it is the right spot
-		#for i in range(4):
-		#	var mark = marker.instantiate()
-		#	mark.set_position(Vector2(corners[i-1][0] + gpos[0], corners[i-1][1] + gpos[1]))
-		#	add_child(mark)
-		
 		# add to global var to access during updates
-		ground_verts.append([ground, corners])
-	print(ground_verts)
+		var collider = [null, null, null, null]
+		ground_verts.append([ground, corners, collider])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,17 +38,20 @@ func _physics_process(delta):
 	test_draw = []
 	test_red = []
 	
-	# select which light rays are actually important
+	# select which light rays are actually important and make colliders
 	for object in ground_verts:
 		
 		var space_state = get_world_2d().direct_space_state
+		var ground = object[0]
+		var corners = object[1]
+		var collider = object[2]
+		
 		# make corner to vectors to corners
-		var gpos = object[0].position
-		for i in range(len(object[1])):
-			var corners = object[1]
+		var gpos = ground.position
+		for i in range(len(corners)):
 			var vect = Vector2(corners[i-1][0] + gpos[0], corners[i-1][1] + gpos[1])
-			var edge1 = corners[i%len(object[1])] - corners[i-1]
-			var edge2 = corners[(i-2)%len(object[1])] - corners[i-1]
+			var edge1 = corners[i%len(corners)] - corners[i-1]
+			var edge2 = corners[(i-2)%len(corners)] - corners[i-1]
 			
 			var light_ray = vect - $Player.position
 			var query = PhysicsRayQueryParameters2D.create($Player.position, vect)
@@ -73,9 +71,7 @@ func _physics_process(delta):
 			var betweenv1 = (edge1.normalized() - light_ray.normalized()).normalized()
 			var betweenv2 = (edge2.normalized() - light_ray.normalized()).normalized()
 			var angle = acos(betweenv1.dot(betweenv2))
-			
-			
-			
+
 			# account for floating point error
 			if(angle - 0.001 >= PI/4):
 				solid = true
@@ -85,10 +81,49 @@ func _physics_process(delta):
 				test_draw.append([corners[i-1]+gpos, betweenv1*20])
 				test_draw.append([corners[i-1]+gpos, betweenv2*20])
 							
-			# draw it if its good
+			# check if relevant
 			if blocked == false and solid == false:
+				# if yes, move or make collider
 				draw_verts.append(vect)
-
+				
+				# physics collision to find end point
+				var query2 = PhysicsRayQueryParameters2D.create(vect + light_ray.normalized()*1, vect + light_ray.normalized()*2000)
+				query2.exclude = [$Player]
+				var result2 = space_state.intersect_ray(query2)
+				
+				# if it collides...
+				if result2 != null:
+					var segment = SegmentShape2D.new()
+					segment.a = vect
+					segment.b = result2.position
+					
+					# check if vectex has a light wall yet
+					if(collider[i-1] == null):
+						# make collider
+						collider[i-1] = light_wall.instantiate()
+						add_child(collider[i-1])
+					# move position
+					collider[i-1].get_node("CollisionShape2D").shape = segment
+					
+			# if no, delete collider if there is one
+			else:
+				if(collider[i-1] != null):
+					collider[i-1].queue_free()
+					collider[i-1] = null
+	
+	
+	
+	# make and move collisions
+	
+	# loop through all rays
+	# check if the ray is relevant
+	# if it is, draw a raycast from the vertex and extend it past in the same direction as the ray
+	# once end point is found...
+	# check if vertex has a collider
+	# if not, make one and set it to vertex and end point
+	# if already has, then move the end point to new end point
+	# if ray is not relevant, delete collider
+	
 # draw relevant light rays
 func _draw():
 	for vertex in draw_verts:	
@@ -104,4 +139,8 @@ func _draw():
 			
 			
 # shape of desired database:
-# object: vertices related to center, vectors that form edges
+# [object, [corner, corner...], [active, active,...], [collider, collider,...]],
+# [object, [corner, corner...], [active, active,...], [collider, collider,...]],
+# [object, [corner, corner...], [active, active,...], [collider, collider,...]],
+# [object, [corner, corner...], [active, active,...], [collider, collider,...]]
+

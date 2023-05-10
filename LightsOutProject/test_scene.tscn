@@ -20,3 +20,19 @@ scale = Vector2(2, 0.05)
 [node name="Ground2" parent="." instance=ExtResource("2_vw67v")]
 position = Vector2(77, 23)
 scale = Vector2(0.5, 0.4)
+
+[node name="walls" parent="." instance=ExtResource("2_vw67v")]
+position = Vector2(229, 42)
+scale = Vector2(0.120013, 2.18763)
+
+[node name="walls2" parent="." instance=ExtResource("2_vw67v")]
+position = Vector2(-202, 41)
+scale = Vector2(0.120013, 2.18763)
+
+[node name="walls3" parent="." instance=ExtResource("2_vw67v")]
+position = Vector2(-7.99999, 168)
+scale = Vector2(3.95527, 0.168114)
+
+[node name="walls4" parent="." instance=ExtResource("2_vw67v")]
+position = Vector2(6, -90)
+scale = Vector2(4.12001, -0.172365)
