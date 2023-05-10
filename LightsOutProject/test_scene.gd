@@ -2,6 +2,7 @@ extends Node2D
 
 var marker = preload("res://marker.tscn")
 var light_wall = preload("res://light_wall.tscn")
+var lantern
 var ground_verts = []
 var draw_verts = []
 
@@ -10,6 +11,8 @@ var test_red = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	lantern = $lantern
 	
 	# find all the walls in level and get vertices
 	for ground in find_children("Ground*"):
@@ -38,6 +41,9 @@ func _physics_process(delta):
 	test_draw = []
 	test_red = []
 	
+	var mouse = get_viewport().get_mouse_position()
+	lantern.position = mouse
+	
 	# select which light rays are actually important and make colliders
 	for object in ground_verts:
 		
@@ -53,9 +59,9 @@ func _physics_process(delta):
 			var edge1 = corners[i%len(corners)] - corners[i-1]
 			var edge2 = corners[(i-2)%len(corners)] - corners[i-1]
 			
-			var light_ray = vect - $Player.position
-			var query = PhysicsRayQueryParameters2D.create($Player.position, vect)
-			query.exclude = [$Player]
+			var light_ray = vect - lantern.position
+			var query = PhysicsRayQueryParameters2D.create(lantern.position, vect)
+			query.exclude = [$Player, lantern]
 			var result = space_state.intersect_ray(query)
 			
 			# check if it intersects with anything in front
@@ -88,7 +94,7 @@ func _physics_process(delta):
 				
 				# physics collision to find end point
 				var query2 = PhysicsRayQueryParameters2D.create(vect + light_ray.normalized()*1, vect + light_ray.normalized()*2000)
-				query2.exclude = [$Player]
+				query2.exclude = [$Player, lantern]
 				var result2 = space_state.intersect_ray(query2)
 				
 				# if it collides...
@@ -127,7 +133,7 @@ func _physics_process(delta):
 # draw relevant light rays
 func _draw():
 	for vertex in draw_verts:	
-		draw_line($Player.position, vertex, Color(1,1,1), 1)
+		draw_line(lantern.position, vertex, Color(1,1,1), 1)
 	for pair in test_draw:
 		draw_line(pair[0], pair[1] + pair[0], Color.LIGHT_GREEN, 1)
 		draw_circle(pair[1] + pair[0], 1, Color.LIGHT_GREEN)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3ju5q60t7quw"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ju5q60t7quw"]
 
 [ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="1_h2qkj"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_srbv3"]
 [ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="2_vw67v"]
+[ext_resource type="PackedScene" uid="uid://ck7usm3smr8xs" path="res://marker.tscn" id="4_ejch4"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_srbv3")
@@ -36,3 +37,5 @@ scale = Vector2(3.95527, 0.168114)
 [node name="walls4" parent="." instance=ExtResource("2_vw67v")]
 position = Vector2(6, -90)
 scale = Vector2(4.12001, -0.172365)
+
+[node name="lantern" parent="." instance=ExtResource("4_ejch4")]
