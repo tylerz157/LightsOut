@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3ju5q60t7quw"]
+[gd_scene load_steps=4 format=3 uid="uid://b3ju5q60t7quw"]
 
 [ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="1_h2qkj"]
+[ext_resource type="Script" path="res://test_scene.gd" id="1_srbv3"]
 [ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="2_vw67v"]
 
 [node name="TestScene" type="Node2D"]
+script = ExtResource("1_srbv3")
 
 [node name="Player" parent="." instance=ExtResource("1_h2qkj")]
 scale = Vector2(0.2, 0.2)
@@ -12,12 +14,13 @@ scale = Vector2(0.2, 0.2)
 zoom = Vector2(2, 2)
 
 [node name="Ground" parent="." instance=ExtResource("2_vw67v")]
-position = Vector2(-119, 237)
-scale = Vector2(20, 0.3)
+position = Vector2(5.00002, 84)
+scale = Vector2(2, 0.05)
 
 [node name="Ground2" parent="." instance=ExtResource("2_vw67v")]
-position = Vector2(226, 44)
+position = Vector2(62, 24)
+scale = Vector2(-0.0852147, 0.427139)
 
 [node name="Ground3" parent="." instance=ExtResource("2_vw67v")]
-position = Vector2(540, -223)
-scale = Vector2(7.07254, 0.132301)
+position = Vector2(115, -15)
+scale = Vector2(1.47422, -0.050056)
