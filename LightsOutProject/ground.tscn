@@ -10,9 +10,10 @@ cull_mode = 1
 polygon = PackedVector2Array(64, -64, -64, -64, -64, 64, 64, 64)
 
 [node name="Ground" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 31
 
 [node name="Icon" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("1_nv4o0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

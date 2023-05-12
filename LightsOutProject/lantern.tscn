@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cil3d6kneaxjc"]
+
+[ext_resource type="Script" path="res://lantern.gd" id="1_lyqwx"]
+[ext_resource type="Texture2D" uid="uid://ckqvtra4du7b4" path="res://icon.svg" id="1_o4cvy"]
+[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="2_kjrpc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jegyu"]
+
+[node name="Lantern" type="RigidBody2D"]
+modulate = Color(1, 0.556863, 0, 1)
+collision_layer = 8
+collision_mask = 27
+gravity_scale = 0.5
+script = ExtResource("1_lyqwx")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_o4cvy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(10, 10)
+shadow_enabled = true
+texture = ExtResource("2_kjrpc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.633, 0.633)
+shape = SubResource("RectangleShape2D_jegyu")
