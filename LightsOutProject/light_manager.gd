@@ -2,6 +2,7 @@ extends Node2D
 
 var marker = preload("res://marker.tscn")
 var light_wall = preload("res://light_wall.tscn")
+var key = preload("res://key.tscn")
 var ray_exclude = []
 var lantern
 var ground_verts = []
@@ -16,6 +17,7 @@ func _ready():
 	lantern = get_parent().find_children("Lantern")[0]
 	ray_exclude.append(get_parent().find_children("Player")[0])
 	ray_exclude.append(lantern)
+	ray_exclude.append(key)
 	
 	# find all the walls in level and get vertices
 	for ground in get_parent().find_children("Ground*"):

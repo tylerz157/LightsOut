@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://fd3f3rklkhq5"]
+
+[ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="1_b0gnr"]
+[ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="1_dlupx"]
+[ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="1_p8xxk"]
+[ext_resource type="Script" path="res://level_1_demo.gd" id="1_tjm0m"]
+[ext_resource type="Texture2D" uid="uid://ckqvtra4du7b4" path="res://icon.svg" id="2_mdvo1"]
+[ext_resource type="PackedScene" uid="uid://cil3d6kneaxjc" path="res://lantern.tscn" id="2_tu3uv"]
+[ext_resource type="PackedScene" uid="uid://c2ls65u0cr3ke" path="res://key.tscn" id="6_tlu41"]
+[ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_1grhl"]
+[ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="8_vfk4w"]
+
+[node name="Level 1 Demo" type="Node2D"]
+script = ExtResource("1_tjm0m")
+
+[node name="LightManager" parent="." instance=ExtResource("1_p8xxk")]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-10, -99)
+scale = Vector2(23.495, 14.6527)
+texture = ExtResource("2_mdvo1")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="walls" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(652, -155)
+scale = Vector2(0.440014, 5.42763)
+
+[node name="walls2" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(-666, -137)
+scale = Vector2(0.360011, 5.82763)
+
+[node name="walls3" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(16, 179)
+scale = Vector2(11.2753, 0.368113)
+
+[node name="walls4" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(-2, -277)
+scale = Vector2(10.5707, 0.368882)
+
+[node name="Player" parent="." instance=ExtResource("1_b0gnr")]
+position = Vector2(-377, -155)
+scale = Vector2(0.2, 0.2)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+
+[node name="Lantern" parent="." instance=ExtResource("2_tu3uv")]
+position = Vector2(-612, 141)
+
+[node name="Ground" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(-199, 100)
+scale = Vector2(1.47281, 0.127494)
+
+[node name="Ground2" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(46, 34)
+scale = Vector2(1.82204, 0.136255)
+
+[node name="Ground3" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(-734, 37)
+scale = Vector2(2.16917, 0.136255)
+
+[node name="Ground4" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(285, 175)
+scale = Vector2(-0.190829, 1.45626)
+
+[node name="Ground5" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(712, -4)
+scale = Vector2(2.16917, 0.136255)
+
+[node name="Ground6" parent="." instance=ExtResource("1_dlupx")]
+position = Vector2(558, 37)
+rotation = 3.14159
+scale = Vector2(0.190829, -2.49626)
+
+[node name="Key" parent="." instance=ExtResource("6_tlu41")]
+position = Vector2(-618, 8)
+
+[node name="Goal" parent="." instance=ExtResource("8_vfk4w")]
+position = Vector2(599, -46)
+scale = Vector2(3.13046, 3.52646)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui" parent="CanvasLayer" instance=ExtResource("8_1grhl")]

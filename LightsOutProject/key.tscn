@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ls65u0cr3ke"]
+
+[ext_resource type="Script" path="res://key.gd" id="1_yy3ti"]
+[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="2_colol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jegyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sd4n"]
+
+[node name="Key" type="RigidBody2D"]
+modulate = Color(1, 0.556863, 0.933333, 1)
+collision_layer = 8
+collision_mask = 27
+gravity_scale = 0.2
+script = ExtResource("1_yy3ti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_jegyu")
+
+[node name="Key" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_8sd4n")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -9.99999
+offset_top = -8.0
+offset_right = 44.0
+offset_bottom = 37.0
+scale = Vector2(0.36, 0.36)
+theme_override_font_sizes/font_size = 30
+text = "KEY"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("2_colol")
+texture_scale = 0.2
