@@ -101,17 +101,18 @@ func _physics_process(delta):
 				
 				# if it collides...
 				if result2 != null:
-					var segment = SegmentShape2D.new()
-					segment.a = vect
-					segment.b = result2.position
-					
-					# check if vectex has a light wall yet
-					if(collider[i-1] == null):
-						# make collider
-						collider[i-1] = light_wall.instantiate()
-						add_child(collider[i-1])
-					# move position
-					collider[i-1].get_node("CollisionShape2D").shape = segment
+					if result2.size() != 0:
+						var segment = SegmentShape2D.new()
+						segment.a = vect
+						segment.b = result2.position
+						
+						# check if vectex has a light wall yet
+						if(collider[i-1] == null):
+							# make collider
+							collider[i-1] = light_wall.instantiate()
+							add_child(collider[i-1])
+						# move position
+						collider[i-1].get_node("CollisionShape2D").shape = segment
 					
 			# if no, delete collider if there is one
 			else:
