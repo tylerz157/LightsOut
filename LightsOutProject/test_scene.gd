@@ -4,5 +4,6 @@ extends Node2D
 func _ready():
 	pass
 	
-func _process(delta):
+func _physics_process(delta):
 	pass
+	#print($Player/Area2D.get_overlapping_areas())
