@@ -13,8 +13,6 @@
 [node name="Level 1 Demo" type="Node2D"]
 script = ExtResource("1_tjm0m")
 
-[node name="LightManager" parent="." instance=ExtResource("1_p8xxk")]
-
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-10, -99)
 scale = Vector2(23.495, 14.6527)
@@ -80,6 +78,8 @@ position = Vector2(-618, 8)
 [node name="Goal" parent="." instance=ExtResource("8_vfk4w")]
 position = Vector2(599, -46)
 scale = Vector2(3.13046, 3.52646)
+
+[node name="LightManager" parent="." instance=ExtResource("1_p8xxk")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

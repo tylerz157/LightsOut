@@ -1,8 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cil3d6kneaxjc"]
+[gd_scene load_steps=8 format=3 uid="uid://cil3d6kneaxjc"]
 
 [ext_resource type="Script" path="res://lantern.gd" id="1_lyqwx"]
-[ext_resource type="Texture2D" uid="uid://ckqvtra4du7b4" path="res://icon.svg" id="1_o4cvy"]
 [ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="2_kjrpc"]
+[ext_resource type="Texture2D" uid="uid://bbjmygtrnbi5" path="res://lightsoutdevgraphics/lantern_plain.png" id="2_t5abk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm8vb"]
+atlas = ExtResource("2_t5abk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqm6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm8vb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jegyu"]
 
@@ -15,9 +30,8 @@ collision_mask = 27
 gravity_scale = 0.2
 script = ExtResource("1_lyqwx")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_o4cvy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sqm6l")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(10, 10)
