@@ -32,6 +32,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("grab"):
 		# if already holding something, let go
 		if held_obj != null:
+			print('let go')
 			held_obj.get_parent().grab(null)
 			held_obj = null
 		# grab something
