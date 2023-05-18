@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://swtfi3grjer"]
+[gd_scene load_steps=6 format=3 uid="uid://swtfi3grjer"]
 
-[ext_resource type="Texture2D" uid="uid://ckqvtra4du7b4" path="res://icon.svg" id="1_nv4o0"]
+[ext_resource type="Texture2D" uid="uid://b1cwigp6kww27" path="res://lightsoutdevgraphics/ground_outline.png" id="1_0a5pg"]
+[ext_resource type="Script" path="res://ground.gd" id="1_ffadm"]
+[ext_resource type="Texture2D" uid="uid://b44eitv4ajiot" path="res://lightsoutdevgraphics/ground.png" id="1_hkdx7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75kjn"]
 size = Vector2(128, 128)
@@ -12,9 +14,15 @@ polygon = PackedVector2Array(64, -64, -64, -64, -64, 64, 64, 64)
 [node name="Ground" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 63
+script = ExtResource("1_ffadm")
 
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_nv4o0")
+[node name="outline" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_0a5pg")
+
+[node name="texture" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_hkdx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_75kjn")

@@ -29,19 +29,19 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("3_iwn7y")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qad04"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6syx8"]
 atlas = ExtResource("4_g1iam")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ki0ox"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kile8"]
 atlas = ExtResource("4_g1iam")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5vieg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaqg5"]
 atlas = ExtResource("4_g1iam")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7yni"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugvom"]
 atlas = ExtResource("4_g1iam")
 region = Rect2(96, 0, 32, 32)
 
@@ -62,7 +62,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,20 +77,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qad04")
+"texture": SubResource("AtlasTexture_6syx8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ki0ox")
+"texture": SubResource("AtlasTexture_kile8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5vieg")
+"texture": SubResource("AtlasTexture_aaqg5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7yni")
+"texture": SubResource("AtlasTexture_ugvom")
 }],
 "loop": true,
 "name": &"move_right",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnkty"]
@@ -107,9 +107,12 @@ script = ExtResource("1_gsbo5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_4s60k")
-animation = &"move_right"
+animation = &"jump"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.439999, 1)
 shape = SubResource("RectangleShape2D_cnkty")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -117,4 +120,5 @@ collision_layer = 4
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.599999, 1)
 shape = SubResource("RectangleShape2D_b7tgq")
