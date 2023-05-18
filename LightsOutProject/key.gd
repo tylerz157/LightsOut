@@ -7,6 +7,7 @@ var grabbed = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.play("idle")
 	pass # Replace with function body.
 
 

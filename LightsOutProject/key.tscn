@@ -1,7 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2ls65u0cr3ke"]
+[gd_scene load_steps=15 format=3 uid="uid://c2ls65u0cr3ke"]
 
 [ext_resource type="Script" path="res://key.gd" id="1_yy3ti"]
 [ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="2_colol"]
+[ext_resource type="Texture2D" uid="uid://bagyj71ixeerp" path="res://lightsoutdevgraphics/key_idle.png" id="2_v8gig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bean0"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri1l7"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvfvx"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3iy8"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as42w"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgwkm"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tb6t"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlb34"]
+atlas = ExtResource("2_v8gig")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo3qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bean0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri1l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvfvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3iy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as42w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgwkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tb6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlb34")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jegyu"]
 
@@ -14,6 +79,14 @@ collision_mask = 27
 gravity_scale = 0.2
 script = ExtResource("1_yy3ti")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_jo3qi")
+animation = &"idle"
+frame = 2
+frame_progress = 0.959899
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_jegyu")
@@ -25,15 +98,6 @@ collision_mask = 31
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
 scale = Vector2(1.2, 1.2)
 shape = SubResource("RectangleShape2D_8sd4n")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -9.99999
-offset_top = -8.0
-offset_right = 44.0
-offset_bottom = 37.0
-scale = Vector2(0.36, 0.36)
-theme_override_font_sizes/font_size = 30
-text = "KEY"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
