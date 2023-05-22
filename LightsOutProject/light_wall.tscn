@@ -1,12 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5gvd0srlty78"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_j50vq"]
+[gd_scene format=3 uid="uid://c5gvd0srlty78"]
 
 [node name="Light Wall" type="StaticBody2D"]
 collision_layer = 32
 collision_mask = 63
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("SegmentShape2D_j50vq")
-one_way_collision_margin = 0.0
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

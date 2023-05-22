@@ -81,7 +81,6 @@ position = Vector2(599, -46)
 scale = Vector2(3.13046, 3.52646)
 
 [node name="LightManager" parent="." instance=ExtResource("1_p8xxk")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
