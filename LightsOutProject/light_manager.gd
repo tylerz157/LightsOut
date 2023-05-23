@@ -33,6 +33,7 @@ func _ready():
 			
 			# set up database
 			var collider = light_wall.instantiate()
+			add_child(collider)
 			collider.collision_layer = 32
 			collider.collision_mask = 4
 			shadowcast_obj.append([object, vertices, collider])
@@ -71,127 +72,78 @@ func _physics_process(delta):
 		var collider = object[2]
 		# vertex order: ray vertex, ray end, next end.., ray end2, ray vertex2, vertex going back
 		var collider_points = []
-		var collider_polygon = []
 		
-		# find the bad vertex (obtuse bisector)
+		# find important vertices (edges with light rays)
 		for i in range(len(vertices)):
 			var edge1 = vertices[(i+1)%len(vertices)] - vertices[i]
 			var edge2 = vertices[(i-1)%len(vertices)] - vertices[i]
 			var light_ray = vertices[i] - lantern.position
 			
-			var solid = false
+			# find if ray creates an obtuse angle (vertex is in the light)
+			var in_light = false
 			var betweenv1 = (edge1.normalized() - light_ray.normalized()).normalized()
 			var betweenv2 = (edge2.normalized() - light_ray.normalized()).normalized()
 			var angle = acos(betweenv1.dot(betweenv2))
-
 			
-			# account for floating point error
-			if(angle - 0.001 >= PI/4):
-				solid = true
+			# find if ray creates an acute angle (vertex is in the shadow)
+			var in_shadow = false
+			var bisector = (edge1.normalized() + edge2.normalized()).normalized()
+			var angle2 = acos(bisector.dot((-light_ray).normalized()))
+			
+			# identify good light rays
+			if(angle + 0.001 >= 3*PI/4):
+				in_light = true
 				test_red.append([vertices[i], betweenv1*20])
 				test_red.append([vertices[i], betweenv2*20])
+			elif(angle2 - 0.001 <= PI/4):
+				in_shadow = true
+				test_red.append([vertices[i], bisector*20])
 			else:
 				test_draw.append([vertices[i], betweenv1*20])
 				test_draw.append([vertices[i], betweenv2*20])
 				
-		# find raycast end positions of other vertices 
-			if(solid == false):
+			# find raycast end positions of vertices 
+			if(in_light == false):
+				var end_query = PhysicsRayQueryParameters2D.create(vertices[i] + light_ray.normalized()*1, vertices[i] + light_ray.normalized()*2000)
+				end_query.exclude = excluded_obj
+				var end_result = space_state.intersect_ray(end_query)
+				if end_result != null:
+					if end_result.size() != 0:
+						test_points.append(end_result.position)
+						collider_points.append(end_result.position)
+			
+			# only add vertex if it is a good light ray
+			if(in_light == false and in_shadow == false):
 				collider_points.append(vertices[i])
 				test_points.append(vertices[i])
-				var query = PhysicsRayQueryParameters2D.create(vertices[i] + light_ray.normalized()*1, vertices[i] + light_ray.normalized()*2000)
-				query.exclude = excluded_obj
-				var result = space_state.intersect_ray(query)
-				if result != null:
-					if result.size() != 0:
-						test_points.append(result.position)
-						collider_points.append(result.position)
 						
 		# move collider to verticies and end position locations
-		collider_polygon = collider_points
-		collider.get_node("CollisionPolygon2D").set_polygon(collider_polygon)
-#
-#		# make corner to vectors to corners
-#		var gpos = ground.position
-#		for i in range(len(corners)):
-#			var vect = Vector2(corners[i-1][0] + gpos[0], corners[i-1][1] + gpos[1])
-#			var edge1 = corners[i%len(corners)] - corners[i-1]
-#			var edge2 = corners[(i-2)%len(corners)] - corners[i-1]
-#
-#			var light_ray = vect - lantern.position
-#			var query = PhysicsRayQueryParameters2D.create(lantern.position, vect)
-#			query.exclude = ray_exclude
-#			var result = space_state.intersect_ray(query)
-#
-#			# check if it intersects with anything in front
-#			var blocked = true
-#			if result == {}:
-#				blocked = false
-#			elif result != null:
-#				if (result.position - vect).length() <= 1:
-#					blocked = false
-#
-#			# check if the light is colliding or keeps going afterwards
-#			var solid = false
-#			var betweenv1 = (edge1.normalized() - light_ray.normalized()).normalized()
-#			var betweenv2 = (edge2.normalized() - light_ray.normalized()).normalized()
-#			var angle = acos(betweenv1.dot(betweenv2))
-#
-#			# account for floating point error
-#			if(angle - 0.001 >= PI/4):
-#				solid = true
-#				test_red.append([corners[i-1]+gpos, betweenv1*20])
-#				test_red.append([corners[i-1]+gpos, betweenv2*20])
-#			else:
-#				test_draw.append([corners[i-1]+gpos, betweenv1*20])
-#				test_draw.append([corners[i-1]+gpos, betweenv2*20])
-#
-#			# check if relevant
-#			if blocked == false and solid == false:
-#				# if yes, move or make collider
-#				draw_verts.append(vect)
-#
-#				# physics collision to find end point
-#				var query2 = PhysicsRayQueryParameters2D.create(vect + light_ray.normalized()*1, vect + light_ray.normalized()*2000)
-#				query2.exclude = ray_exclude
-#				var result2 = space_state.intersect_ray(query2)
-#
-#				# if it collides...
-#				if result2 != null:
-#					if result2.size() != 0:
-#						var segment = SegmentShape2D.new()
-#						segment.a = vect
-#						segment.b = result2.position
-#
-#						# check if vectex has a light wall yet
-#						if(collider[i-1] == null):
-#							# make collider
-#							collider[i-1] = light_wall.instantiate()
-#							add_child(collider[i-1])
-#						# move position
-#						collider[i-1].get_node("CollisionShape2D").shape = segment
-#
-#			# if no, delete collider if there is one
-#			else:
-#				if(collider[i-1] != null):
-#					collider[i-1].queue_free()
-#					collider[i-1] = null
-	
-	
-	
-	# make and move collisions
-	
-	# setup:
-	# loop through every object and determine if it casts light rays.
-	# if ground, add to list, if border, dont, neither, add to raycast ignore list
-	# if lantern, assign it to the light source
-	# set up database and colliders (interact with just player rn)
-	
-	# loop:
-	# loop through each light object
-	# find the bad vertex (obtuse bisector)
-	# find raycast end positions of other vertices 
-	# move collider to verticies and end position locations
-
+		# find centroid
+		if(len(collider_points) > 0):
+			var cent_x = 0
+			var cent_y = 0
+			var centroid = Vector2.ZERO
+			for point in collider_points:
+				cent_x += point.x
+				cent_y += point.y
+			centroid = Vector2(cent_x/len(collider_points), cent_y/len(collider_points))
+			test_points.append(centroid)
+			
+			# order vertices by going clockwise/counterclockwise around centroid
+			# turn into heap later 
+			var collider_polygon = []
+			for i in range(len(collider_points)):
+				var smallest_angle = collider_points[0]
+				for point in collider_points:
+					if Vector2.UP.angle_to(point - centroid) < Vector2.UP.angle_to(smallest_angle - centroid):
+						smallest_angle = point
+				collider_polygon.append(smallest_angle)
+				collider_points.erase(smallest_angle)
+			
+			collider.get_node("CollisionPolygon2D").set_polygon(collider_polygon)
+		
+		
+		
 # draw relevant light rays
 func _draw():
 	for vertex in draw_verts:	
@@ -204,13 +156,3 @@ func _draw():
 		draw_circle(pair[1] + pair[0], 1, Color.RED)
 	for point in test_points:
 		draw_circle(point, 5, Color.BLANCHED_ALMOND)
-	
-			
-			
-			
-# shape of desired database:
-# [object, [corner, corner...], [active, active,...], [collider, collider,...]],
-# [object, [corner, corner...], [active, active,...], [collider, collider,...]],
-# [object, [corner, corner...], [active, active,...], [collider, collider,...]],
-# [object, [corner, corner...], [active, active,...], [collider, collider,...]]
-
