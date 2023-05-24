@@ -103,7 +103,7 @@ func _physics_process(delta):
 				test_draw.append([vertices[i], betweenv2*20])
 				
 			# find raycast end positions of vertices 
-			if(in_light == false):
+			if(in_light == false and in_shadow == false):
 				var end_query = PhysicsRayQueryParameters2D.create(vertices[i] + light_ray.normalized()*1, vertices[i] + light_ray.normalized()*2000)
 				end_query.exclude = excluded_obj
 				var end_result = space_state.intersect_ray(end_query)
@@ -111,9 +111,6 @@ func _physics_process(delta):
 					if end_result.size() != 0:
 						test_points.append(end_result.position)
 						collider_points.append(end_result.position)
-			
-			# only add vertex if it is a good light ray
-			if(in_light == false and in_shadow == false):
 				collider_points.append(vertices[i])
 				test_points.append(vertices[i])
 						

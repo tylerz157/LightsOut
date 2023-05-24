@@ -20,6 +20,7 @@ func _physics_process(delta):
 	
 	if grabbed != null:
 		self.position = grabbed.position
+		
 	
 func grab(object):
 	grabbed = object

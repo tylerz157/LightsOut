@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ju5q60t7quw"]
+[gd_scene load_steps=8 format=3 uid="uid://dg2ghunw7h4es"]
 
 [ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="1_h2qkj"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_srbv3"]
 [ext_resource type="Texture2D" uid="uid://ckqvtra4du7b4" path="res://icon.svg" id="2_qn1y7"]
 [ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="2_vw67v"]
 [ext_resource type="PackedScene" uid="uid://cil3d6kneaxjc" path="res://lantern.tscn" id="5_q7h2p"]
+[ext_resource type="PackedScene" uid="uid://byr1npb41km45" path="res://objects.tscn" id="6_7ifs6"]
 [ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="6_bohx3"]
 
 [node name="TestScene" type="Node2D"]
@@ -51,5 +52,7 @@ scale = Vector2(4.12001, -0.172365)
 
 [node name="Lantern" parent="." instance=ExtResource("5_q7h2p")]
 position = Vector2(-81, -56)
+
+[node name="interactables" parent="." instance=ExtResource("6_7ifs6")]
 
 [node name="LightManager" parent="." instance=ExtResource("6_bohx3")]
