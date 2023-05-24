@@ -1,50 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://cil3d6kneaxjc"]
+[gd_scene load_steps=9 format=3 uid="uid://dlh6l06tn5u3u"]
 
-[ext_resource type="Script" path="res://lantern.gd" id="1_lyqwx"]
-[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="2_kjrpc"]
-[ext_resource type="Texture2D" uid="uid://bbjmygtrnbi5" path="res://lightsoutdevgraphics/lantern_plain.png" id="2_t5abk"]
+[ext_resource type="PackedScene" uid="uid://byr1npb41km45" path="res://objects.tscn" id="1_5mluw"]
+[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="2_clfku"]
+[ext_resource type="Texture2D" uid="uid://bbjmygtrnbi5" path="res://lightsoutdevgraphics/lantern_plain.png" id="2_qivcr"]
+[ext_resource type="Texture2D" uid="uid://cctukneugx4on" path="res://lightsoutdevgraphics/lantern_pulsate.png" id="3_aq8ik"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hm8vb"]
-atlas = ExtResource("2_t5abk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m115"]
+atlas = ExtResource("2_qivcr")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_sqm6l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2omb"]
+atlas = ExtResource("3_aq8ik")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsobb"]
+atlas = ExtResource("3_aq8ik")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbl5r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hm8vb")
+"texture": SubResource("AtlasTexture_5m115")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2omb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsobb")
 }],
 "loop": true,
-"name": &"default",
+"name": &"pulsate",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jegyu"]
+[node name="objects" instance=ExtResource("1_5mluw")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sd4n"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_cbl5r")
+animation = &"pulsate"
 
-[node name="Lantern" type="RigidBody2D"]
-modulate = Color(1, 0.556863, 0, 1)
-collision_layer = 8
-collision_mask = 27
-gravity_scale = 0.2
-script = ExtResource("1_lyqwx")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_sqm6l")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." index="3"]
 scale = Vector2(10, 10)
 shadow_enabled = true
-texture = ExtResource("2_kjrpc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.633, 0.633)
-shape = SubResource("RectangleShape2D_jegyu")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 31
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_8sd4n")
+texture = ExtResource("2_clfku")

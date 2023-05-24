@@ -13,11 +13,9 @@ var test_points = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# setup:
-	print(get_parent().get_children())
 	# loop through every object and determine if it casts light rays.
 	for object in get_parent().get_children():
-		# if ground, add to list, if border, dont, neither, add to raycast ignore list
-		print(object.get_name())
+		# ignore all items in raycast except for border walls
 		if(object.get_name().contains("Ground")):
 			print('found ground')
 			var opos = object.position
@@ -38,16 +36,14 @@ func _ready():
 			collider.collision_mask = 4
 			shadowcast_obj.append([object, vertices, collider])
 			
+		if(object.get_name().contains("Lantern")):
+			lantern = object
+			print(object)
+
 		# if border, do nothing
-		elif(object.get_name().contains("wall")):
-			pass
-		
-		# any other object, add to excluded	
-		else:
-			# if lantern, assign it to the light source
-			if(object.get_name().contains("Lantern")):
-				lantern = object
+		if(!object.get_name().contains("wall")):
 			excluded_obj.append(object)
+		
 			
 	print(excluded_obj)
 
@@ -62,7 +58,7 @@ func _physics_process(delta):
 	test_red = []
 	test_points = []
 	
-	# loop:
+	# loop
 	
 	# loop through each light object
 	for object in shadowcast_obj:

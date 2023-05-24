@@ -15,6 +15,7 @@ func _process(delta):
 func _physics_process(delta):
 	if grabbed_by != null:
 		self.position = grabbed_by.position
+		self.freeze = true
 	
 	
 func grab(grabber):
@@ -24,3 +25,4 @@ func drop(direction):
 	set_linear_velocity(grabbed_by.velocity)
 	apply_central_impulse(direction)
 	grabbed_by = null
+	self.freeze = false
