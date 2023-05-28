@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)	
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if(is_jump == true):
 		pass
@@ -40,8 +40,13 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("move_right")
 		$AnimatedSprite2D.flip_h = true
 
-	move_and_slide()
-	
+	var collision = move_and_slide()
+	# bounce off of light walls
+#	if collision != null:
+#		if(collision.get_collider().get_name().contains("light")):
+#			print(collision)
+#			velocity = velocity.bounce(collision.get_normal())
+#
 	if(is_on_floor()):
 		is_jump = false
 	

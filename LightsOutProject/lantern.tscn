@@ -30,15 +30,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_tsobb")
 }],
 "loop": true,
-"name": &"pulsate",
+"name": &"idle",
 "speed": 5.0
 }]
 
-[node name="objects" instance=ExtResource("1_5mluw")]
+[node name="lantern" instance=ExtResource("1_5mluw")]
+light_only = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_cbl5r")
-animation = &"pulsate"
+animation = &"idle"
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="3"]
 scale = Vector2(10, 10)

@@ -40,7 +40,7 @@ func _ready():
 			lantern = object
 			print(object)
 
-		# if border, do nothing
+		# if not a border, exclude
 		if(!object.get_name().contains("wall")):
 			excluded_obj.append(object)
 		
@@ -100,7 +100,7 @@ func _physics_process(delta):
 				
 			# find raycast end positions of vertices 
 			if(in_light == false and in_shadow == false):
-				var end_query = PhysicsRayQueryParameters2D.create(vertices[i] + light_ray.normalized()*1, vertices[i] + light_ray.normalized()*2000)
+				var end_query = PhysicsRayQueryParameters2D.create(vertices[i] + light_ray.normalized(), vertices[i] + light_ray.normalized()*2000)
 				end_query.exclude = excluded_obj
 				var end_result = space_state.intersect_ray(end_query)
 				if end_result != null:
@@ -109,7 +109,7 @@ func _physics_process(delta):
 						collider_points.append(end_result.position)
 				collider_points.append(vertices[i])
 				test_points.append(vertices[i])
-						
+				
 		# move collider to verticies and end position locations
 		# find centroid
 		if(len(collider_points) > 0):
