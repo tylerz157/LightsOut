@@ -6,4 +6,3 @@ func _ready():
 	
 func _physics_process(delta):
 	pass
-	#print($Player/Area2D.get_overlapping_areas())
