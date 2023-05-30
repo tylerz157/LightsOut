@@ -16,14 +16,14 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		$AnimatedSprite2D.play("jump")
 		is_jump = true
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -54,7 +54,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("grab"):
 		# if already holding something, let go
 		if held_obj != null:
-			held_obj.get_parent().drop(direction*Vector2(100, 0))
+			held_obj.get_parent().drop(direction)
 			held_obj = null
 		# grab something
 		else:
