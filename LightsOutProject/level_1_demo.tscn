@@ -85,3 +85,4 @@ scale = Vector2(3.13046, 3.52646)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ui" parent="CanvasLayer" instance=ExtResource("8_1grhl")]
+metadata/_edit_use_anchors_ = true

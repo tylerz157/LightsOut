@@ -3,7 +3,7 @@ extends CharacterBody2D
 enum State {FREE, HOLDING}
 var held_obj = null
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 var is_jump = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -41,11 +41,6 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = true
 
 	var collision = move_and_slide()
-	# bounce off of light walls
-#	if collision != null:
-#		if(collision.get_collider().get_name().contains("light")):
-#			print(collision)
-#			velocity = velocity.bounce(collision.get_normal())
 #
 	if(is_on_floor()):
 		is_jump = false
