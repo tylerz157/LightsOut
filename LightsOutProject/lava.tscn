@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://di5o6hbs8dwub"]
+
+[ext_resource type="Script" path="res://lava.gd" id="1_51r7s"]
+[ext_resource type="Texture2D" uid="uid://djxt5jjwci6sp" path="res://lightsoutdevgraphics/lava.jpg" id="1_a4nng"]
+[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="1_rnqij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw1g8"]
+
+[node name="Lava" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_51r7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_a4nng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pw1g8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.09, 0.09)
+color = Color(1, 0.52549, 0, 1)
+texture = ExtResource("1_rnqij")
+texture_scale = 2.0
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

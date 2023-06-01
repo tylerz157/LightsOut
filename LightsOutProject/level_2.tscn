@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1kyjxmy243c3"]
+
+[ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_dhpxi"]
+[ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_afhu2"]
+[ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="3_idbc4"]
+[ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="4_f1ojj"]
+[ext_resource type="PackedScene" uid="uid://dlh6l06tn5u3u" path="res://lantern.tscn" id="5_5vggn"]
+[ext_resource type="PackedScene" uid="uid://cv8d270mh37uc" path="res://key.tscn" id="6_stjv7"]
+[ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="7_2i54n"]
+[ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_mhnov"]
+
+[node name="Level 2" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(17, -101)
+scale = Vector2(4, 4)
+texture = ExtResource("1_dhpxi")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="Goal" parent="." instance=ExtResource("2_afhu2")]
+position = Vector2(-102, -90)
+scale = Vector2(3.13046, 3.52646)
+
+[node name="walls" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-4, -1)
+scale = Vector2(0.440014, 5.42763)
+
+[node name="walls2" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-666, -137)
+scale = Vector2(0.360011, 5.82763)
+
+[node name="walls3" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-4, 194)
+scale = Vector2(10.8753, 2.16811)
+
+[node name="walls4" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-2, -277)
+scale = Vector2(10.5707, 0.368882)
+
+[node name="Player" parent="." instance=ExtResource("4_f1ojj")]
+position = Vector2(-380, -144)
+scale = Vector2(0.3, 0.3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-10, 0)
+zoom = Vector2(2.5, 2.5)
+
+[node name="Lantern" parent="." instance=ExtResource("5_5vggn")]
+position = Vector2(-502, -4)
+
+[node name="Ground6" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-503, 34)
+rotation = 3.14159
+scale = Vector2(-0.212427, 0.312137)
+
+[node name="Ground7" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-692, -63)
+rotation = 3.14159
+scale = Vector2(1.23084, 0.215999)
+
+[node name="Ground8" parent="." instance=ExtResource("3_idbc4")]
+position = Vector2(-99.0001, -45)
+rotation = 3.14159
+scale = Vector2(1.23084, 0.215999)
+
+[node name="Key" parent="." instance=ExtResource("6_stjv7")]
+position = Vector2(-629, -92)
+
+[node name="LightManager" parent="." instance=ExtResource("7_2i54n")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui" parent="CanvasLayer" instance=ExtResource("8_mhnov")]
+metadata/_edit_use_anchors_ = true

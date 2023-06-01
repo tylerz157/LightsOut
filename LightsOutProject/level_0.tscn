@@ -18,7 +18,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_4e5s8")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [node name="Goal" parent="." instance=ExtResource("6_3k82l")]
@@ -42,7 +41,7 @@ position = Vector2(-2, -277)
 scale = Vector2(10.5707, 0.368882)
 
 [node name="Player" parent="." instance=ExtResource("3_eoqun")]
-position = Vector2(-605, -149)
+position = Vector2(-576, -220)
 scale = Vector2(0.3, 0.3)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

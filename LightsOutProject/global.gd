@@ -10,7 +10,12 @@ func _ready():
 
 func next_level():
 	current_scene_num += 1
-	call_deferred("_deferred_goto_scene", "res://level" + str(current_scene_num) + ".tscn")
+	print("res://level" + str(current_scene_num) + ".tscn")
+	call_deferred("_deferred_goto_scene", "res://level_" + str(current_scene_num) + ".tscn")
+	
+func reset_level():
+	print("res://level" + str(current_scene_num) + ".tscn")
+	call_deferred("_deferred_goto_scene", "res://level_" + str(current_scene_num) + ".tscn")
 
 
 func _deferred_goto_scene(path):
