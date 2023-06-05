@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwji2776lwej0"]
+
+[ext_resource type="Script" path="res://drop_gate.gd" id="1_41jq1"]
+[ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="1_id1in"]
+
+[sub_resource type="Gradient" id="Gradient_ia7tn"]
+colors = PackedColorArray(0, 0, 0, 0.588235, 1, 1, 1, 0.588235)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8d881"]
+gradient = SubResource("Gradient_ia7tn")
+fill_from = Vector2(0.394495, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f75f"]
+
+[node name="Drop Gate" type="Area2D"]
+collision_layer = 16
+collision_mask = 28
+script = ExtResource("1_41jq1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.31, 0.31)
+texture = SubResource("GradientTexture2D_8d881")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8f75f")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_id1in")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

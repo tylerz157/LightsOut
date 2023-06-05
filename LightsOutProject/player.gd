@@ -62,6 +62,14 @@ func _physics_process(delta):
 			if grab_obj != null:
 				grab_obj.get_parent().grab(self)
 				held_obj = grab_obj
+
+func drop():
+	var obj = held_obj
+	if held_obj != null:
+		held_obj.get_parent().drop(0)
+		held_obj = null
+	if(obj != null):
+		return obj.get_parent()
 			
 			
 			

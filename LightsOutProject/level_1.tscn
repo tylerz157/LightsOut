@@ -22,7 +22,7 @@ texture = ExtResource("1_kl4v0")
 color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [node name="Goal" parent="." instance=ExtResource("2_2wf8h")]
-position = Vector2(-102, -90)
+position = Vector2(-133, -115)
 scale = Vector2(3.13046, 3.52646)
 
 [node name="walls" parent="." instance=ExtResource("3_xaa04")]
@@ -42,15 +42,15 @@ position = Vector2(-2, -277)
 scale = Vector2(10.5707, 0.368882)
 
 [node name="Player" parent="." instance=ExtResource("4_40w8u")]
-position = Vector2(-380, -144)
+position = Vector2(-470, -119)
 scale = Vector2(0.3, 0.3)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-10, 0)
-zoom = Vector2(2.5, 2.5)
+position = Vector2(-9.99988, -3.33334)
+zoom = Vector2(2, 2)
 
 [node name="Lantern" parent="." instance=ExtResource("5_ddq7b")]
-position = Vector2(-528, -36)
+position = Vector2(-443, -38)
 
 [node name="Ground6" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-503, 34)
@@ -58,12 +58,12 @@ rotation = 3.14159
 scale = Vector2(2.18757, 0.312137)
 
 [node name="Ground8" parent="." instance=ExtResource("3_xaa04")]
-position = Vector2(-99.0001, -45)
+position = Vector2(-101, -66)
 rotation = 3.14159
 scale = Vector2(1.23084, 0.215999)
 
 [node name="Key" parent="." instance=ExtResource("6_48n1b")]
-position = Vector2(-266, -88)
+position = Vector2(-129, -5)
 
 [node name="LightManager" parent="." instance=ExtResource("7_tydbv")]
 
@@ -83,4 +83,10 @@ rotation = 3.14159
 scale = Vector2(2.18757, 0.312137)
 
 [node name="Lava" parent="." instance=ExtResource("9_0eckm")]
-position = Vector2(-400, 3)
+position = Vector2(-197, 34)
+scale = Vector2(16.4088, 2.23021)
+
+[node name="Ground10" parent="." instance=ExtResource("3_xaa04")]
+position = Vector2(-67, 23)
+rotation = 3.14159
+scale = Vector2(1.23084, 0.215999)

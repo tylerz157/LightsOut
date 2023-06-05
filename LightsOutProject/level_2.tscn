@@ -13,12 +13,11 @@
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(17, -101)
+position = Vector2(-428, 3)
 scale = Vector2(4, 4)
 texture = ExtResource("1_dhpxi")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [node name="Goal" parent="." instance=ExtResource("2_afhu2")]

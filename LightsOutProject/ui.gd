@@ -12,7 +12,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("restart"):
+		Global.reset_level()
 	
 func win():
 	$Winner.visible = true

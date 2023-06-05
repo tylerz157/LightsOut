@@ -12,8 +12,7 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	if area.get_parent().name == "Player":
-		print("die")
+func _on_body_entered(body):
+	print(body.name)
+	if body.name == "Player":
 		death.emit()

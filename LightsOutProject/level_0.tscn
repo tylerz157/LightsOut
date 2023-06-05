@@ -49,7 +49,7 @@ position = Vector2(-10, 0)
 zoom = Vector2(2.5, 2.5)
 
 [node name="Lantern" parent="." instance=ExtResource("4_tccyb")]
-position = Vector2(-458, -194)
+position = Vector2(-461, -162)
 
 [node name="Ground6" parent="." instance=ExtResource("2_ixngs")]
 position = Vector2(-459, -100)
