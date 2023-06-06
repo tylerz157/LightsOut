@@ -28,4 +28,5 @@ func grab(grabber):
 func drop(direction):
 	self.freeze = false
 	set_linear_velocity(grabbed_by.velocity)
+	grabbed_by = null
 	
