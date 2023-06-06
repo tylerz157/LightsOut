@@ -21,7 +21,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		$AnimatedSprite2D.play("jump")
 		is_jump = true
-
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
@@ -30,6 +30,14 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
+	# push other objects around
+	# source: https://ask.godotengine.org/147759/how-to-push-a-rigidbody2d-with-a-characterbody2d
+	if self.move_and_slide(): # true if collided
+		for i in self.get_slide_collision_count():
+			var col = self.get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().set_linear_velocity(col.get_normal() * -push_force)
+	
 	if(is_jump == true):
 		pass
 	elif(velocity == Vector2(0,0)):
@@ -61,15 +69,6 @@ func _physics_process(delta):
 			if grab_obj != null:
 				grab_obj.get_parent().grab(self)
 				held_obj = grab_obj
-	
-	# push other objects around
-	# source: https://ask.godotengine.org/147759/how-to-push-a-rigidbody2d-with-a-characterbody2d
-	if self.move_and_slide(): # true if collided
-		for i in self.get_slide_collision_count():
-			var col = self.get_slide_collision(i)
-			if col.get_collider() is RigidBody2D:
-				col.get_collider().set_linear_velocity(col.get_normal() * -push_force)
-				#col.get_collider().add_constant_force(col.get_normal() * -push_force)
 
 func drop():
 	var obj = held_obj
