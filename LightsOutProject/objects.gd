@@ -25,6 +25,10 @@ func grab(grabber):
 	grabbed_by = grabber
 	
 func drop(direction):
-	set_linear_velocity(grabbed_by.velocity)
+	# avoid dropping the object too fast cuz it glitches
+	if(grabbed_by.velocity.y < 0):
+		set_linear_velocity(grabbed_by.velocity)
+	else:
+		set_linear_velocity(Vector2(grabbed_by.velocity.x, 0))
 	grabbed_by = null
 	
