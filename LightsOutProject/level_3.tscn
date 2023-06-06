@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5pa2hn7skkw4"]
+[gd_scene load_steps=12 format=3 uid="uid://b5pa2hn7skkw4"]
 
 [ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_8j7sm"]
 [ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_mkk00"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_xikaj"]
 [ext_resource type="PackedScene" uid="uid://dwji2776lwej0" path="res://drop_gate.tscn" id="9_by3n6"]
 [ext_resource type="PackedScene" uid="uid://bo42bflgiamke" path="res://glass.tscn" id="10_1p38d"]
+[ext_resource type="PackedScene" uid="uid://d0whdaa21hkmj" path="res://push_block.tscn" id="11_s220s"]
 
 [node name="level_3" type="Node2D"]
 
@@ -79,9 +80,12 @@ position = Vector2(-629, -92)
 metadata/_edit_use_anchors_ = true
 
 [node name="Drop Gate" parent="." instance=ExtResource("9_by3n6")]
-position = Vector2(-269, -26)
+position = Vector2(-203, -36)
 scale = Vector2(4.52, 9.44)
 
 [node name="Glass" parent="." instance=ExtResource("10_1p38d")]
-position = Vector2(-398, -5)
-scale = Vector2(1.68, 6.44)
+position = Vector2(-267, 39)
+scale = Vector2(1.68, 1.96)
+
+[node name="Ground Pushblock" parent="." instance=ExtResource("11_s220s")]
+position = Vector2(-375, -48)

@@ -17,24 +17,13 @@ func _ready():
 	for object in get_parent().get_children():
 		# ignore all items in raycast except for border walls
 		if(object.get_name().contains("Ground")):
-			print('found ground')
-			var opos = object.position
-			var oscale = object.scale
-			var rect = object.get_node("CollisionShape2D").shape.get_rect()
-			
-			# get vectors for vertex positions
-			var vertices = []
-			vertices.append(Vector2(opos.x + (rect.size[0] * oscale[0])/2, opos.y + (rect.size[1] * oscale[1])/2))
-			vertices.append(Vector2(opos.x - (rect.size[0] * oscale[0])/2, opos.y + (rect.size[1] * oscale[1])/2))
-			vertices.append(Vector2(opos.x - (rect.size[0] * oscale[0])/2, opos.y - (rect.size[1] * oscale[1])/2))
-			vertices.append(Vector2(opos.x + (rect.size[0] * oscale[0])/2, opos.y - (rect.size[1] * oscale[1])/2))
-			
+						
 			# set up database
 			var collider = light_wall.instantiate()
 			add_child(collider)
 			collider.collision_layer = 32
 			collider.collision_mask = 4
-			shadowcast_obj.append([object, vertices, collider])
+			shadowcast_obj.append([object, collider])
 			
 		if(object.get_name().contains("Lantern")):
 			lantern = object
@@ -62,10 +51,23 @@ func _physics_process(delta):
 	
 	# loop through each light object
 	for object in shadowcast_obj:
-		var space_state = get_parent().get_world_2d().direct_space_state
 		var obj_node = object[0]
-		var vertices = object[1]
-		var collider = object[2]
+		var collider = object[1]
+		var vertices = []
+		
+		# get vertices 
+		var opos = obj_node.position
+		var oscale = obj_node.scale
+		var rect = obj_node.get_node("CollisionShape2D").shape.get_rect()
+		
+		# get vectors for vertex positions
+		vertices.append(Vector2(opos.x + (rect.size[0] * oscale[0])/2, opos.y + (rect.size[1] * oscale[1])/2))
+		vertices.append(Vector2(opos.x - (rect.size[0] * oscale[0])/2, opos.y + (rect.size[1] * oscale[1])/2))
+		vertices.append(Vector2(opos.x - (rect.size[0] * oscale[0])/2, opos.y - (rect.size[1] * oscale[1])/2))
+		vertices.append(Vector2(opos.x + (rect.size[0] * oscale[0])/2, opos.y - (rect.size[1] * oscale[1])/2))
+			
+		var space_state = get_parent().get_world_2d().direct_space_state
+		
 		# vertex order: ray vertex, ray end, next end.., ray end2, ray vertex2, vertex going back
 		var collider_points = []
 		

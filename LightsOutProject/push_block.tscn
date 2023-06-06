@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0whdaa21hkmj"]
+
+[ext_resource type="Texture2D" uid="uid://baufqfwiut1pk" path="res://lightsoutdevgraphics/brik.jpg" id="1_ke48o"]
+
+[sub_resource type="GDScript" id="GDScript_h5sl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdo3l"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hg8ut"]
+polygon = PackedVector2Array(10, 10, -10, 10, -10, -10, 10, -10)
+
+[node name="Push Block" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 23
+lock_rotation = true
+script = SubResource("GDScript_h5sl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_ke48o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mdo3l")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hg8ut")
