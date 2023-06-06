@@ -23,12 +23,9 @@ func _physics_process(delta):
 	
 func grab(grabber):
 	grabbed_by = grabber
+	self.freeze = true
 	
 func drop(direction):
-	# avoid dropping the object too fast cuz it glitches
-	if(grabbed_by.velocity.y < 0):
-		set_linear_velocity(grabbed_by.velocity)
-	else:
-		set_linear_velocity(Vector2(grabbed_by.velocity.x, 0))
-	grabbed_by = null
+	self.freeze = false
+	set_linear_velocity(grabbed_by.velocity)
 	

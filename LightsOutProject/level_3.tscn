@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5pa2hn7skkw4"]
+[gd_scene load_steps=10 format=3 uid="uid://b5pa2hn7skkw4"]
 
 [ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_8j7sm"]
 [ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_mkk00"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dlh6l06tn5u3u" path="res://lantern.tscn" id="5_41qk4"]
 [ext_resource type="PackedScene" uid="uid://cv8d270mh37uc" path="res://key.tscn" id="6_m8y6u"]
 [ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="7_6n30y"]
+[ext_resource type="PackedScene" uid="uid://di5o6hbs8dwub" path="res://lava.tscn" id="7_j6q0o"]
 [ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_xikaj"]
-[ext_resource type="PackedScene" uid="uid://dwji2776lwej0" path="res://drop_gate.tscn" id="9_by3n6"]
-[ext_resource type="PackedScene" uid="uid://bo42bflgiamke" path="res://glass.tscn" id="10_1p38d"]
-[ext_resource type="PackedScene" uid="uid://d0whdaa21hkmj" path="res://push_block.tscn" id="11_s220s"]
 
 [node name="level_3" type="Node2D"]
 
@@ -21,27 +19,28 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_8j7sm")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.333333, 0.333333, 0.333333, 1)
 
 [node name="Goal" parent="." instance=ExtResource("2_mkk00")]
-position = Vector2(-102, -90)
+position = Vector2(-420, 5)
 scale = Vector2(3.13046, 3.52646)
 
 [node name="walls" parent="." instance=ExtResource("3_5wfxf")]
 position = Vector2(-4, -1)
-scale = Vector2(0.440014, 5.42763)
+scale = Vector2(0.440014, -4.77237)
 
 [node name="walls2" parent="." instance=ExtResource("3_5wfxf")]
 position = Vector2(-666, -137)
-scale = Vector2(0.360011, 5.82763)
+scale = Vector2(0.360011, -4.09237)
 
 [node name="walls3" parent="." instance=ExtResource("3_5wfxf")]
 position = Vector2(-4, 194)
-scale = Vector2(10.8753, 2.16811)
+scale = Vector2(-10.6447, 2.16811)
 
 [node name="walls4" parent="." instance=ExtResource("3_5wfxf")]
 position = Vector2(-2, -277)
-scale = Vector2(10.5707, 0.368882)
+scale = Vector2(-10.7893, 0.368882)
 
 [node name="Player" parent="." instance=ExtResource("4_bggt3")]
 position = Vector2(-380, -144)
@@ -52,7 +51,7 @@ position = Vector2(-10, 0)
 zoom = Vector2(2.5, 2.5)
 
 [node name="Lantern" parent="." instance=ExtResource("5_41qk4")]
-position = Vector2(-502, -4)
+position = Vector2(-324, -111)
 
 [node name="Ground6" parent="." instance=ExtResource("3_5wfxf")]
 position = Vector2(-503, 34)
@@ -62,15 +61,23 @@ scale = Vector2(-0.212427, 0.312137)
 [node name="Ground7" parent="." instance=ExtResource("3_5wfxf")]
 position = Vector2(-692, -63)
 rotation = 3.14159
-scale = Vector2(1.23084, 0.215999)
+scale = Vector2(-1.20916, 0.215999)
 
 [node name="Ground8" parent="." instance=ExtResource("3_5wfxf")]
-position = Vector2(-99.0001, -45)
+position = Vector2(-234, -82)
 rotation = 3.14159
-scale = Vector2(1.23084, 0.215999)
+scale = Vector2(-3.32915, 0.175998)
 
 [node name="Key" parent="." instance=ExtResource("6_m8y6u")]
-position = Vector2(-629, -92)
+position = Vector2(-48, -109)
+
+[node name="Lava" parent="." instance=ExtResource("7_j6q0o")]
+position = Vector2(-273, -86)
+scale = Vector2(1.44, 1.6)
+
+[node name="Lava2" parent="." instance=ExtResource("7_j6q0o")]
+position = Vector2(-179, -85)
+scale = Vector2(2.4, 4.24)
 
 [node name="LightManager" parent="." instance=ExtResource("7_6n30y")]
 
@@ -79,13 +86,6 @@ position = Vector2(-629, -92)
 [node name="ui" parent="CanvasLayer" instance=ExtResource("8_xikaj")]
 metadata/_edit_use_anchors_ = true
 
-[node name="Drop Gate" parent="." instance=ExtResource("9_by3n6")]
-position = Vector2(-203, -36)
-scale = Vector2(4.52, 9.44)
-
-[node name="Glass" parent="." instance=ExtResource("10_1p38d")]
-position = Vector2(-267, 39)
-scale = Vector2(1.68, 1.96)
-
-[node name="Ground Pushblock" parent="." instance=ExtResource("11_s220s")]
-position = Vector2(-375, -48)
+[node name="Lava3" parent="." instance=ExtResource("7_j6q0o")]
+position = Vector2(-96, -84)
+scale = Vector2(0.96, 4.6)

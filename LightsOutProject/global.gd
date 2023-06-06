@@ -1,7 +1,7 @@
 extends Node
 
 var current_scene = null
-var current_scene_num = 0
+var current_scene_num = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

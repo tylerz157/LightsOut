@@ -27,19 +27,19 @@ scale = Vector2(3.13046, 3.52646)
 
 [node name="walls" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-4, -1)
-scale = Vector2(0.440014, 5.42763)
+scale = Vector2(0.440014, -4.45237)
 
 [node name="walls2" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-666, -137)
-scale = Vector2(0.360011, 5.82763)
+scale = Vector2(0.360011, -2.33418)
 
 [node name="walls3" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-4, 194)
-scale = Vector2(10.8753, 2.16811)
+scale = Vector2(-10.8847, 2.16811)
 
 [node name="walls4" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-2, -277)
-scale = Vector2(10.5707, 0.368882)
+scale = Vector2(-10.9093, 0.368882)
 
 [node name="Player" parent="." instance=ExtResource("4_40w8u")]
 position = Vector2(-470, -119)
@@ -55,12 +55,12 @@ position = Vector2(-443, -38)
 [node name="Ground6" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-503, 34)
 rotation = 3.14159
-scale = Vector2(2.18757, 0.312137)
+scale = Vector2(-2.17243, 0.312137)
 
 [node name="Ground8" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-101, -66)
 rotation = 3.14159
-scale = Vector2(1.23084, 0.215999)
+scale = Vector2(-1.28916, 0.215999)
 
 [node name="Key" parent="." instance=ExtResource("6_48n1b")]
 position = Vector2(-129, -5)
@@ -75,12 +75,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Ground7" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-589, -6)
 rotation = 3.14159
-scale = Vector2(2.18757, 0.312137)
+scale = Vector2(-2.21243, 0.312137)
 
 [node name="Ground9" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-680, -46)
 rotation = 3.14159
-scale = Vector2(2.18757, 0.312137)
+scale = Vector2(-2.21243, 0.312137)
 
 [node name="Lava" parent="." instance=ExtResource("9_0eckm")]
 position = Vector2(-197, 34)
@@ -89,4 +89,4 @@ scale = Vector2(16.4088, 2.23021)
 [node name="Ground10" parent="." instance=ExtResource("3_xaa04")]
 position = Vector2(-67, 23)
 rotation = 3.14159
-scale = Vector2(1.23084, 0.215999)
+scale = Vector2(-1.24916, 0.215999)

@@ -26,19 +26,19 @@ scale = Vector2(3.13046, 3.52646)
 
 [node name="walls" parent="." instance=ExtResource("2_ixngs")]
 position = Vector2(-190, -29)
-scale = Vector2(0.440014, 5.42763)
+scale = Vector2(0.440014, -4.25237)
 
 [node name="walls2" parent="." instance=ExtResource("2_ixngs")]
 position = Vector2(-666, -137)
-scale = Vector2(0.360011, 5.82763)
+scale = Vector2(0.360011, -4.21237)
 
 [node name="walls3" parent="." instance=ExtResource("2_ixngs")]
 position = Vector2(-414, 186)
-scale = Vector2(4.0353, 2.16811)
+scale = Vector2(-4.4047, 2.16811)
 
 [node name="walls4" parent="." instance=ExtResource("2_ixngs")]
 position = Vector2(-2, -277)
-scale = Vector2(10.5707, 0.368882)
+scale = Vector2(-10.6293, 0.368882)
 
 [node name="Player" parent="." instance=ExtResource("3_eoqun")]
 position = Vector2(-576, -220)
@@ -59,7 +59,7 @@ scale = Vector2(2.95083, -0.13626)
 [node name="Ground7" parent="." instance=ExtResource("2_ixngs")]
 position = Vector2(-461, -125)
 rotation = 3.14159
-scale = Vector2(0.150833, 0.335999)
+scale = Vector2(0.150833, -0.343999)
 
 [node name="Key" parent="." instance=ExtResource("5_s1a66")]
 position = Vector2(-382, -16)
