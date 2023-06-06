@@ -26,7 +26,7 @@ func grab(grabber):
 	self.freeze = true
 	
 func drop(direction):
-	self.freeze = false
+	set_deferred('freeze', false)
 	set_linear_velocity(grabbed_by.velocity)
 	grabbed_by = null
 	

@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5pa2hn7skkw4"]
+
+[ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_k0mo4"]
+[ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_t7jod"]
+[ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="3_a347g"]
+[ext_resource type="PackedScene" uid="uid://bo42bflgiamke" path="res://glass.tscn" id="4_5d5a0"]
+[ext_resource type="PackedScene" uid="uid://dwji2776lwej0" path="res://drop_gate.tscn" id="5_dh15y"]
+[ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="6_2dglt"]
+[ext_resource type="PackedScene" uid="uid://dlh6l06tn5u3u" path="res://lantern.tscn" id="7_fr7tg"]
+[ext_resource type="PackedScene" uid="uid://cv8d270mh37uc" path="res://key.tscn" id="8_jl4ot"]
+[ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="9_cicly"]
+[ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="10_4rokf"]
+
+[node name="level_4" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-428, 3)
+scale = Vector2(4, 4)
+texture = ExtResource("1_k0mo4")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="Goal" parent="." instance=ExtResource("2_t7jod")]
+position = Vector2(-264, 18)
+scale = Vector2(3.13046, 3.52646)
+
+[node name="walls" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-189, -12)
+scale = Vector2(0.440014, -4.77237)
+
+[node name="walls2" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-666, -137)
+scale = Vector2(0.360011, -4.09237)
+
+[node name="walls3" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-4, 194)
+scale = Vector2(-10.6447, 2.16811)
+
+[node name="walls4" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-2, -277)
+scale = Vector2(-10.7893, 0.368882)
+
+[node name="Glass" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-441, -109)
+scale = Vector2(2.92, 5.04)
+
+[node name="Ground1" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-427, 3)
+rotation = 3.14159
+scale = Vector2(1.23083, -0.936257)
+
+[node name="Ground2" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-653, 29)
+rotation = 3.14159
+scale = Vector2(1.23083, -0.17626)
+
+[node name="Ground3" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-684, -5)
+rotation = 3.14159
+scale = Vector2(1.23083, -0.17626)
+
+[node name="Drop Gate" parent="." instance=ExtResource("5_dh15y")]
+position = Vector2(-441, -209)
+scale = Vector2(2.9333, 5.05508)
+
+[node name="Ground4" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-523, -45)
+rotation = 3.14159
+scale = Vector2(0.380865, -0.0326752)
+
+[node name="Ground5" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-641, -89)
+rotation = 3.14159
+scale = Vector2(0.430832, -0.0562595)
+
+[node name="Glass2" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-550, -132)
+scale = Vector2(1.96001, 0.365534)
+
+[node name="Ground6" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-643, -180)
+rotation = 3.14159
+scale = Vector2(0.430832, -0.0562595)
+
+[node name="Glass3" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-525, -201)
+scale = Vector2(3.55999, 0.365534)
+
+[node name="Glass4" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-227, -193)
+scale = Vector2(2.63999, 0.365534)
+
+[node name="Ground7" parent="." instance=ExtResource("3_a347g")]
+position = Vector2(-353, -237)
+rotation = 3.14159
+scale = Vector2(0.110834, 0.663741)
+
+[node name="Glass5" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-327, -133)
+scale = Vector2(2.63999, 0.365534)
+
+[node name="Glass6" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-243, -92)
+scale = Vector2(2.63999, 0.365534)
+
+[node name="Glass7" parent="." instance=ExtResource("4_5d5a0")]
+position = Vector2(-246, -164)
+scale = Vector2(2.63999, 0.365534)
+
+[node name="Player" parent="." instance=ExtResource("6_2dglt")]
+position = Vector2(-545, 16)
+scale = Vector2(0.304899, 0.3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-10, 0)
+zoom = Vector2(2, 2)
+
+[node name="Lantern" parent="." instance=ExtResource("7_fr7tg")]
+position = Vector2(-522, 42)
+
+[node name="Key" parent="." instance=ExtResource("8_jl4ot")]
+position = Vector2(-241, -225)
+
+[node name="LightManager" parent="." instance=ExtResource("9_cicly")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui" parent="CanvasLayer" instance=ExtResource("10_4rokf")]
+metadata/_edit_use_anchors_ = true

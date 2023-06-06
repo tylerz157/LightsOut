@@ -52,7 +52,7 @@ zoom = Vector2(2.5, 2.5)
 position = Vector2(-461, -162)
 
 [node name="Ground6" parent="." instance=ExtResource("2_ixngs")]
-position = Vector2(-459, -100)
+position = Vector2(-458, -100)
 rotation = 3.14159
 scale = Vector2(2.95083, -0.13626)
 

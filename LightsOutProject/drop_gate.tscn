@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dn4qem18jiegk" path="res://light.webp" id="1_id1in"]
 
 [sub_resource type="Gradient" id="Gradient_ia7tn"]
-colors = PackedColorArray(0, 0, 0, 0.588235, 1, 1, 1, 0.588235)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.496774, 1)
+colors = PackedColorArray(1, 0, 1, 0, 1, 0, 1, 0.294118, 0, 0, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8d881"]
 gradient = SubResource("Gradient_ia7tn")
-fill_from = Vector2(0.394495, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f75f"]
 

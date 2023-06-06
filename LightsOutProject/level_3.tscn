@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5pa2hn7skkw4"]
+[gd_scene load_steps=10 format=3 uid="uid://6ullsfj65c5n"]
 
-[ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_8j7sm"]
-[ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_mkk00"]
-[ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="3_5wfxf"]
-[ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="4_bggt3"]
-[ext_resource type="PackedScene" uid="uid://dlh6l06tn5u3u" path="res://lantern.tscn" id="5_41qk4"]
-[ext_resource type="PackedScene" uid="uid://cv8d270mh37uc" path="res://key.tscn" id="6_m8y6u"]
-[ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="7_6n30y"]
-[ext_resource type="PackedScene" uid="uid://di5o6hbs8dwub" path="res://lava.tscn" id="7_j6q0o"]
-[ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_xikaj"]
+[ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_5u1hg"]
+[ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_vvvsi"]
+[ext_resource type="PackedScene" uid="uid://swtfi3grjer" path="res://ground.tscn" id="3_mun1y"]
+[ext_resource type="PackedScene" uid="uid://cs1pxj6bws6fj" path="res://player.tscn" id="4_hd634"]
+[ext_resource type="PackedScene" uid="uid://dlh6l06tn5u3u" path="res://lantern.tscn" id="5_oui72"]
+[ext_resource type="PackedScene" uid="uid://cv8d270mh37uc" path="res://key.tscn" id="6_qo1fw"]
+[ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="7_17e71"]
+[ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_6mjpn"]
+[ext_resource type="PackedScene" uid="uid://dwji2776lwej0" path="res://drop_gate.tscn" id="9_vid6c"]
 
 [node name="level_3" type="Node2D"]
 
@@ -16,76 +16,75 @@
 texture_filter = 1
 position = Vector2(-428, 3)
 scale = Vector2(4, 4)
-texture = ExtResource("1_8j7sm")
+texture = ExtResource("1_5u1hg")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.333333, 0.333333, 0.333333, 1)
 
-[node name="Goal" parent="." instance=ExtResource("2_mkk00")]
-position = Vector2(-420, 5)
+[node name="Goal" parent="." instance=ExtResource("2_vvvsi")]
+position = Vector2(-617, 19)
 scale = Vector2(3.13046, 3.52646)
 
-[node name="walls" parent="." instance=ExtResource("3_5wfxf")]
+[node name="walls" parent="." instance=ExtResource("3_mun1y")]
 position = Vector2(-4, -1)
-scale = Vector2(0.440014, -4.77237)
+scale = Vector2(0.440014, -4.85237)
 
-[node name="walls2" parent="." instance=ExtResource("3_5wfxf")]
+[node name="walls2" parent="." instance=ExtResource("3_mun1y")]
 position = Vector2(-666, -137)
-scale = Vector2(0.360011, -4.09237)
+scale = Vector2(0.360011, -5.29237)
 
-[node name="walls3" parent="." instance=ExtResource("3_5wfxf")]
+[node name="walls3" parent="." instance=ExtResource("3_mun1y")]
 position = Vector2(-4, 194)
-scale = Vector2(-10.6447, 2.16811)
+scale = Vector2(-11.0047, 2.16811)
 
-[node name="walls4" parent="." instance=ExtResource("3_5wfxf")]
-position = Vector2(-2, -277)
-scale = Vector2(-10.7893, 0.368882)
+[node name="walls4" parent="." instance=ExtResource("3_mun1y")]
+position = Vector2(-2, -186)
+scale = Vector2(-10.7093, 0.368882)
 
-[node name="Player" parent="." instance=ExtResource("4_bggt3")]
-position = Vector2(-380, -144)
+[node name="walls5" parent="." instance=ExtResource("3_mun1y")]
+position = Vector2(-2, -186)
+scale = Vector2(-10.7093, 0.368882)
+
+[node name="Player" parent="." instance=ExtResource("4_hd634")]
+position = Vector2(-543, 29)
 scale = Vector2(0.3, 0.3)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-10, 0)
 zoom = Vector2(2.5, 2.5)
 
-[node name="Lantern" parent="." instance=ExtResource("5_41qk4")]
-position = Vector2(-324, -111)
+[node name="Lantern" parent="." instance=ExtResource("5_oui72")]
+position = Vector2(-511, 3)
 
-[node name="Ground6" parent="." instance=ExtResource("3_5wfxf")]
-position = Vector2(-503, 34)
+[node name="Ground6" parent="." instance=ExtResource("3_mun1y")]
+position = Vector2(-503, 36)
 rotation = 3.14159
 scale = Vector2(-0.212427, 0.312137)
 
-[node name="Ground7" parent="." instance=ExtResource("3_5wfxf")]
-position = Vector2(-692, -63)
+[node name="Ground8" parent="." instance=ExtResource("3_mun1y")]
+position = Vector2(-316, -64)
 rotation = 3.14159
-scale = Vector2(-1.20916, 0.215999)
+scale = Vector2(0.390839, 0.135999)
 
-[node name="Ground8" parent="." instance=ExtResource("3_5wfxf")]
-position = Vector2(-234, -82)
+[node name="Ground9" parent="." instance=ExtResource("3_mun1y")]
+position = Vector2(-138, -21)
 rotation = 3.14159
-scale = Vector2(-3.32915, 0.175998)
+scale = Vector2(0.790839, 0.135999)
 
-[node name="Key" parent="." instance=ExtResource("6_m8y6u")]
-position = Vector2(-48, -109)
+[node name="Ground7" parent="." instance=ExtResource("3_mun1y")]
+position = Vector2(-428, 58)
+scale = Vector2(0.212427, -0.312137)
 
-[node name="Lava" parent="." instance=ExtResource("7_j6q0o")]
-position = Vector2(-273, -86)
-scale = Vector2(1.44, 1.6)
+[node name="Drop Gate" parent="." instance=ExtResource("9_vid6c")]
+position = Vector2(-317, 0)
+scale = Vector2(1.6, 5.56187)
 
-[node name="Lava2" parent="." instance=ExtResource("7_j6q0o")]
-position = Vector2(-179, -85)
-scale = Vector2(2.4, 4.24)
+[node name="Key" parent="." instance=ExtResource("6_qo1fw")]
+position = Vector2(-139, -41)
 
-[node name="LightManager" parent="." instance=ExtResource("7_6n30y")]
+[node name="LightManager" parent="." instance=ExtResource("7_17e71")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ui" parent="CanvasLayer" instance=ExtResource("8_xikaj")]
+[node name="ui" parent="CanvasLayer" instance=ExtResource("8_6mjpn")]
 metadata/_edit_use_anchors_ = true
-
-[node name="Lava3" parent="." instance=ExtResource("7_j6q0o")]
-position = Vector2(-96, -84)
-scale = Vector2(0.96, 4.6)
