@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5pa2hn7skkw4"]
+[gd_scene load_steps=11 format=3 uid="uid://b5pa2hn7skkw4"]
 
 [ext_resource type="Texture2D" uid="uid://ckxpn4ke8u3j2" path="res://lightsoutdevgraphics/bulkhead-walls-back.png" id="1_8j7sm"]
 [ext_resource type="PackedScene" uid="uid://c7s5x7yl3xutn" path="res://goal.tscn" id="2_mkk00"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bf6ffxku86yg0" path="res://light_manager.tscn" id="7_6n30y"]
 [ext_resource type="PackedScene" uid="uid://bh5111r8i5ajh" path="res://ui.tscn" id="8_xikaj"]
 [ext_resource type="PackedScene" uid="uid://dwji2776lwej0" path="res://drop_gate.tscn" id="9_by3n6"]
+[ext_resource type="PackedScene" uid="uid://bo42bflgiamke" path="res://glass.tscn" id="10_1p38d"]
 
 [node name="level_3" type="Node2D"]
 
@@ -80,3 +81,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Drop Gate" parent="." instance=ExtResource("9_by3n6")]
 position = Vector2(-269, -26)
 scale = Vector2(4.52, 9.44)
+
+[node name="Glass" parent="." instance=ExtResource("10_1p38d")]
+position = Vector2(-398, -5)
+scale = Vector2(1.68, 6.44)

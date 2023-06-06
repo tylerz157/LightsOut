@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo42bflgiamke"]
+
+[ext_resource type="Texture2D" uid="uid://cryab4iih6bqn" path="res://lightsoutdevgraphics/13158264-minecraftglass_l.webp" id="1_es0i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ovp2"]
+
+[node name="Glass" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 28
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.028, 0.028)
+texture = ExtResource("1_es0i8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ovp2")
