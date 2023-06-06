@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq4jr4tpf4w0k"]
+[gd_scene load_steps=2 format=3 uid="uid://c5ktb1d1kvih6"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_dy6pk"]
+[ext_resource type="Script" path="res://win_screen.gd" id="1_5nslk"]
 
-[node name="Main Menu" type="Control"]
+[node name="Win Screen" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -11,16 +11,16 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dy6pk")
+script = ExtResource("1_5nslk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+layout_mode = 0
 offset_left = -580.0
 offset_top = -328.0
 offset_right = -480.0
 offset_bottom = -228.0
 scale = Vector2(11.5902, 6.52925)
-color = Color(0.117647, 0.239216, 0.305882, 1)
+color = Color(0.541176, 0.74902, 0.870588, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Winner" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -46,16 +46,11 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_outline_size = 30
 theme_override_constants/line_spacing = 20
 theme_override_font_sizes/font_size = 100
-text = "im scared of the dark"
+text = "You win!"
 horizontal_alignment = 1
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="back2menu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Start"
+text = "Back to Main Menu"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Quit"
-
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/back2menu" to="." method="_on_back_2_menu_pressed"]

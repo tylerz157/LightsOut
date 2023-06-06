@@ -1,7 +1,8 @@
 extends Node
 
 var current_scene = null
-var current_scene_num = 3
+var current_scene_num = -1
+var max_scene = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,12 +11,17 @@ func _ready():
 
 func next_level():
 	current_scene_num += 1
-	print("res://level" + str(current_scene_num) + ".tscn")
-	call_deferred("_deferred_goto_scene", "res://level_" + str(current_scene_num) + ".tscn")
+	if current_scene_num == max_scene:
+		current_scene_num = -1
+		call_deferred("_deferred_goto_scene", "res://win_screen.tscn")
+	else:
+		call_deferred("_deferred_goto_scene", "res://level_" + str(current_scene_num) + ".tscn")
 	
 func reset_level():
-	print("res://level" + str(current_scene_num) + ".tscn")
 	call_deferred("_deferred_goto_scene", "res://level_" + str(current_scene_num) + ".tscn")
+	
+func go_main_menu():
+	call_deferred("_deferred_goto_scene", "res://main_menu.tscn")
 
 
 func _deferred_goto_scene(path):

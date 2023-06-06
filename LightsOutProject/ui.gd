@@ -1,4 +1,6 @@
 extends Control
+var timer = 0
+var intro
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,14 +11,21 @@ func _ready():
 		if object.name.contains("Goal"):
 			object.victory.connect(win)
 	
+	intro = get_node("../intro")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if timer < 2:
+		timer += delta
+	else:
+		intro.visible = false
+	
+	
 	if Input.is_action_just_pressed("restart"):
 		Global.reset_level()
 	
 func win():
-	$Winner.visible = true
 	Global.next_level()
 	
 func die():
